@@ -1,3 +1,6 @@
+import '../pages/index.css';
+import {initialCards} from '../pages/cards.js'
+
 const container = document.querySelector(".content");
 const cardsContainer = container.querySelector(".places__list");
 
