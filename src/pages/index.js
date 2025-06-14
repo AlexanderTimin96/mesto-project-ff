@@ -1,32 +1,35 @@
-import '../pages/index.css';
-import {initialCards} from '../pages/cards.js'
+import "../pages/index.css";
+import { initialCards } from "../pages/cards.js";
+import { addCard } from "../components/card.js";
+import { openModal, closeModal } from "../components/modal.js";
 
 const container = document.querySelector(".content");
 const cardsContainer = container.querySelector(".places__list");
+
+const addNewCardButton = container.querySelector(".profile__add-button");
+const modalNewCard = document.querySelector(".popup_type_new-card");
+
+const editProfileButton = container.querySelector(".profile__edit-button");
+const modalEditProfile = document.querySelector(".popup_type_edit");
+
+const closeModalButtonArray = document.querySelectorAll(".popup__close");
+
+addNewCardButton.addEventListener("click", () => {
+  openModal(modalNewCard);
+});
+
+editProfileButton.addEventListener("click", () => {
+  openModal(modalEditProfile);
+});
+
+closeModalButtonArray.forEach((closeButton) => {
+  const parentModal = closeButton.closest(".popup")
+  closeButton.addEventListener("click", () => {
+    closeModal(parentModal);
+  });
+});
 
 initialCards.forEach((cardData) => {
   const card = addCard(cardData);
   cardsContainer.append(card);
 });
-
-function addCard(cardData) {
-  const cardTemplate = document.querySelector("#card-template").content;
-  const cardElement = cardTemplate
-    .querySelector(".places__item")
-    .cloneNode(true);
-
-  cardElement.querySelector(".card__image").src = cardData.link;
-  cardElement.querySelector(".card__title").alt = cardData.name;
-  cardElement.querySelector(".card__title").textContent = cardData.name;
-
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    deleteCardItem(cardElement);
-  });
-
-  return cardElement;
-}
-
-function deleteCardItem(cardElement) {
-  cardElement.remove();
-}
