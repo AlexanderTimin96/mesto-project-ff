@@ -54,6 +54,7 @@ function handleFormSubmitPlace(evt) {
   };
   const result = addCard(cardData);
   cardsContainer.prepend(result);
+  formNewCardElement.reset();
   closeModal(modalNewCard);
 }
 
