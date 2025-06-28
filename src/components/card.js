@@ -27,6 +27,9 @@ export function addCard(cardData) {
     openModal(cardModal);
   });
 
+  /**
+   * Лайк
+   */
   const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", () => {
     if (likeButton.classList.contains("card__like-button_is-active")) {
@@ -36,9 +39,12 @@ export function addCard(cardData) {
     }
   });
 
+  /**
+   * Удаление карточки
+   */
   const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", () => {
-    cardElement.remove();;
+    cardElement.remove();
   });
 
   return cardElement;
