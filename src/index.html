@@ -23,7 +23,9 @@
           <div
             class="profile__image"
             style="background-image: url(<%=require('./images/avatar.jpg')%>)"
-          ></div>
+          >
+          <div class="profile__header"></div>
+        </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -36,7 +38,7 @@
         </section>
       </main>
       <footer class="footer page__section">
-        <p class="footer__copyright">© 2025 Mesto Russia</p>
+        <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__content">
@@ -44,9 +46,9 @@
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="edit-profile">
             <input
-              id="name-input"
               type="text"
               name="name"
+              id="name-input"
               class="popup__input popup__input_type_name"
               placeholder="Имя"
               minlength="2"
@@ -57,9 +59,9 @@
             />
             <span class="name-input-error"></span>
             <input
-              id="description-input"
               type="text"
               name="description"
+              id="description-input"
               class="popup__input popup__input_type_description"
               placeholder="Занятие"
               minlength="2"
@@ -81,9 +83,9 @@
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" name="new-place">
             <input
-              id="place-name-input"
               type="text"
               name="place-name"
+              id="place-name-input"
               class="popup__input popup__input_type_card-name"
               placeholder="Название"
               minlength="2"
@@ -94,16 +96,27 @@
             />
             <span class="place-name-input-error"></span>
             <input
-              id="link-input"
               type="url"
               name="link"
+              id="link-input"
               class="popup__input popup__input_type_url"
               placeholder="Ссылка на картинку"
               required
             />
             <span class="link-input-error"></span>
-            <button type="submit" class="button popup__button">
+            <button type="submit" class="button popup__button popup__button_disabled">
               Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_type_delete-card">
+        <div class="popup__content">
+          <button type="button" class="popup__close"></button>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <form class="popup__form" name="delete-card">
+            <button type="submit" class="button popup__button popup__button_disabled">
+              Да
             </button>
           </form>
         </div>
@@ -116,6 +129,26 @@
         </div>
       </div>
     </div>
+    <div class="popup popup_type_avatar-edit">
+      <div class="popup__content">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Обновить фото</h3>
+        <form class="popup__form" name="edit-avatar">
+          <input
+            type="url"
+            name="avatar"
+            id="avatar-input"
+            class="popup__input popup__input_type_avatar-url"
+            placeholder="Ссылка на фото"
+            required
+          />
+          <span class="avatar-input-error"></span>
+          <button type="submit" class="button popup__button popup__button_disabled">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
 
     <template id="card-template">
       <li class="places__item card">
@@ -123,7 +156,10 @@
         <button type="button" class="card__delete-button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
+          <div class="card__like-register"></div>
           <button type="button" class="card__like-button"></button>
+          <span class="card__like-counter">0</span>
+        </div>
         </div>
       </li>
     </template>

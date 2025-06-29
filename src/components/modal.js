@@ -1,21 +1,16 @@
-/**
- * Открытие модалки
- */
-export function openModal(modalElement) {
-  modalElement.classList.add("popup_is-opened");
+// функция открытия попапа
+export function openModal(popup) {
+  popup.classList.add("popup_is-opened");
   document.addEventListener("keydown", closePopupEsc);
 }
 
-/**
- * Закрытие модалки
- */
-export function closeModal(modalElement) {
-  modalElement.classList.remove("popup_is-opened");
+// функция закрытия попапа
+export function closeModal(popup) {
+  popup.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", closePopupEsc);
 }
 
-/**
- * Закрытие модалки по нажатию "Escape"
- */
+// функция закрытия при нажатии 'Esc'
 export function closePopupEsc(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".popup_is-opened");
@@ -23,9 +18,7 @@ export function closePopupEsc(evt) {
   }
 }
 
-/**
- * Закрытие модалки по нажатию на оверплай
- */
+// функция закрытия при 'клике' на оверлей
 export function closePopupBackDropClick(evt) {
   if (evt.target === evt.currentTarget) {
     closeModal(evt.currentTarget);
